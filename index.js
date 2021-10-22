@@ -1,5 +1,5 @@
 import nodeFetch from "node-fetch";
-import fetchCookie from "fetch-cookie/node-fetch";
+import fetchCookie from "fetch-cookie/node-fetch.js";
 import { CookieJar } from "tough-cookie";
 import pkg from "json-2-csv";
 const { json2csv } = pkg;
