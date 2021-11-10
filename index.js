@@ -66,8 +66,7 @@ const extendo = async (email, password) => {
 
   res = await get(
     session,
-    "https://api.paywithextend.com/virtualcards?count=50&page=0&sortDirection=ASC&sortField=activeUpdatedAt&sourceUserOrViewerOrDelegateUser=me&statuses=ACTIVE&statuses=CANCELLED&statuses=CONSUMED&statuses=EXPIRED",
-
+    `https://api.paywithextend.com/virtualcards?count=50&page=0&recipient=${userId}&sortDirection=DESC&sortField=pendingUpdatedAt&statuses=ACTIVE&statuses=PENDING`,
     token
   );
   data = await res.json();
@@ -83,7 +82,7 @@ const extendo = async (email, password) => {
   for (let page = 1; page < pages; page++) {
     res = await get(
       session,
-      `https://api.paywithextend.com/virtualcards?count=50&page=${page}&sortDirection=ASC&sortField=activeUpdatedAt&sourceUserOrViewerOrDelegateUser=me&statuses=ACTIVE&statuses=CANCELLED&statuses=CONSUMED&statuses=EXPIRED`,
+      `https://api.paywithextend.com/virtualcards?count=50&page=${page}&recipient=${userId}&sortDirection=DESC&sortField=pendingUpdatedAt&statuses=ACTIVE&statuses=PENDING`,
       token
     );
     data = await res.json();
