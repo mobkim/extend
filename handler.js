@@ -33,4 +33,27 @@ const post = async (session, url, data, auth) => {
   return res;
 };
 
-export { get, post };
+const put = async (session, url, data, auth) => {
+  let res = await session(url, {
+    method: "PUT",
+    headers: {
+      accept: "application/vnd.paywithextend.v2021-03-12+json",
+      "accept-language": "en-US,en;q=0.9",
+      authorization: auth,
+      "content-type": "application/json",
+      referer: "https://app.paywithextend.com/",
+      "user-agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.20 Safari/537.36",
+      "x-extend-app-id": "app.paywithextend.com",
+      "x-extend-brand": "br_2F0trP1UmE59x1ZkNIAqsg",
+      "x-extend-platform": "web",
+      "x-extend-platform-version":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/100.0.4758.80 Safari/537.36",
+    },
+    body: JSON.stringify(data),
+  });
+
+  return res;
+};
+
+export { get, post, put };
